@@ -1,5 +1,5 @@
-#ifndef extract_h
-#define extract_h
+#ifndef EXTRACT_HPP
+#define EXTRACT_HPP
 
 #define	BUFF_SIZE	1024
 #define	READ_SIZE	BUFF_SIZE - 1
@@ -11,4 +11,4 @@
 char    *read_line(int fd);
 char    *get_one_line(int fd, int *index, char *buff);
 
-#endif
+#endif /* EXTRACT_HPP */

@@ -1,5 +1,5 @@
-#ifndef __Program__
-#define __Program__
+#ifndef PROGRAM_HPP
+#define PROGRAM_HPP
 
 #include <iostream>
 
@@ -41,4 +41,5 @@ class Program
 		t_data          *update_node_with_key_for_value(const char *key,const char *value);
 		t_data          *install_new_node_in_hashtab(t_data *node, t_data *hashtab[HASHSIZE]);
 };
-#endif
+
+#endif /* PROGRAM_HPP */
