@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/extract.h"
-#include "include/parser.h"
-#include "include/Program.h"
+#include "include/extract.hpp"
+#include "include/parser.hpp"
+#include "include/Program.hpp"
 
 Program *all_datas;
 

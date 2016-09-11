@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 
-#include "include/extract.h"
+#include "include/extract.hpp"
 
 static int	read_word(int fd, char *buffer, size_t const size)
 {

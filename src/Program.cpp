@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <exception>
 #include <stdexcept>
-#include "include/Program.h"
+#include "include/Program.hpp"
 
 Program::Program()
 {
