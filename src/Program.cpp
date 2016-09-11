@@ -8,7 +8,7 @@
 
 Program::Program()
 {
-	this->_hashtab = (t_data **)malloc(sizeof(*_hashtab) * HASHSIZE);
+	this->_hashtab = (t_data **) malloc( sizeof(*_hashtab) * HASHSIZE );
 	if (!this->_hashtab)
 		throw 2323;
 }

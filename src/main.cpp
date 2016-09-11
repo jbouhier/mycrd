@@ -6,7 +6,7 @@
 #include "include/parser.hpp"
 #include "include/Program.hpp"
 
-Program *all_datas;
+Program		*all_datas;
 
 
 void add_cmd(char *key, char *value)
@@ -36,10 +36,8 @@ void init(char **cmd_val, int nb_words)
 	if (nb_words == 1)
 	{
 		// puts("\trecherche..");
-		if (all_datas->find_value(key, &value)){
-			
+		if (all_datas->find_value(key, &value))
 			puts(value);
-		}
 		else
 		{
 			puts ("nothing found");
@@ -49,24 +47,21 @@ void init(char **cmd_val, int nb_words)
 	else
 	{
 		if (!strcmp(cmd_val[1], "D"))
-		{
 			delete_cmd(key);
-		}
 		else
-		{
 			add_cmd(key, value);
-		}
 	}
 }
 
 int main(int argc, const char * argv[])
 {
-	char *str;
-	char **cmd_val;
-	int nb_words;
+	char	*str;
+	char	**cmd_val;
+	int		nb_words;
 
 	//    singleton
 	all_datas = new Program();
+
 	while ((str = read_line(0)))
 	{
 		if (*str)
@@ -79,10 +74,12 @@ int main(int argc, const char * argv[])
 		str = NULL;
 	}
 
-	while(all_datas->_dictionnary != NULL) {
+	while (all_datas->_dictionnary != NULL) 
+	{
 		printf("cle  : %s => valeur : %s\n", all_datas->_dictionnary->cle, all_datas->_dictionnary->valeur);
 		all_datas->_dictionnary = all_datas->_dictionnary->next;
 	}
+	
 	delete all_datas;
 	return 0;
 }
