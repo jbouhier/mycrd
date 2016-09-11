@@ -1,7 +1,7 @@
 CC      :=  g++ -g 
 SRC     :=  $(wildcard src/*.cpp) 
 BDIR    :=  obj
-EDIR	:=  Release
+EDIR    :=  Release
 OBJ     :=  $(SRC:src/%.c=$(BDIR)/%.o)
 CFLAGS  :=  -W -Wall -Werror
 NAME    :=  $(EDIR)/MyCrd
