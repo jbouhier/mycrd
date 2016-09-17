@@ -1,5 +1,5 @@
-#ifndef PROGRAM_HPP
-# define PROGRAM_HPP
+#ifndef LINKEDHASHMAP_HPP
+# define LINKEDHASHMAP_HPP
 
 #include <iostream>
 
@@ -15,15 +15,15 @@ typedef struct		s_data
 }					t_data;
 
 
-class Program
+class LinkedHashMap
 {
-	public:
+	private:
 		t_data		**_hashtab;
 		t_data		*_dictionnary;
 
 	public:
-		Program();
-		~Program();
+		LinkedHashMap();
+		~LinkedHashMap();
 
 		bool	add_data(char *key, char *value);
 		bool	delete_key(char *key, char **value);
@@ -39,4 +39,4 @@ class Program
 		t_data			*install_new_node_in_hashtab(t_data *node, t_data *hashtab[HASHSIZE]);
 };
 
-#endif /* !PROGRAM_HPP */
+#endif /* !LINKEDHASHMAP_HPP */
