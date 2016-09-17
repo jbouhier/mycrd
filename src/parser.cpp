@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 # define CHAR_IS_WHITE(c)		(c == '\t' || c == ' ')
-# define CHAR_NOT_WHITE(c)	(c != '\t' && c != ' ')
+# define CHAR_NOT_WHITE(c)		(c != '\t' && c != ' ')
 
 static char	*skip_whitechar(char *s)
 {
@@ -14,16 +14,16 @@ static char	*skip_whitechar(char *s)
 	return (s);
 }
 
-static char *skip_word(char *s)
+static char		*skip_word(char *s)
 {
 	while (*s && CHAR_NOT_WHITE(*s))
 		s++;
 	return (s);
 }
 
-static int	count_word_len(char *s)
+static int		count_word_len(char *s)
 {
-	char 			*p;
+	char	*p;
 
 	p = s;
 	while (*s && CHAR_NOT_WHITE(*s))
@@ -33,7 +33,7 @@ static int	count_word_len(char *s)
 
 static int	count_words(char *s)
 {
-	int			nb_words;
+	int		nb_words;
 
 	nb_words = 0;
 	while (*s)
@@ -48,21 +48,21 @@ static int	count_words(char *s)
 	return (nb_words);
 }
 
-static char *my_strndup(char *src, int len)
+static char		*my_strndup(char *src, int len)
 {
-	int     i;
-	char    *dest;
+	int		i;
+	char	*dest;
 
 	dest = (char *)malloc(sizeof(*src) * (len + 1));
 	for (i = 0; i < len; ++i)
 		dest[i] = src[i];
 	dest[i] = 0;
-	return dest;
+	return (dest);
 }
 
-static char *get_next_word(char **src)
+static char		*get_next_word(char **src)
 {
-	char 	*ret;
+	char	*ret;
 	int		len;
 
 	*src = skip_whitechar(*src);
@@ -74,7 +74,7 @@ static char *get_next_word(char **src)
 		*src = *src + len;
 		return (ret);
 	}
-	return 0;
+	return (0);
 }
 
 void	free_cmd(char **wtb)
@@ -82,7 +82,7 @@ void	free_cmd(char **wtb)
 	int i;
 
 	i = 0;
-	while(wtb[i])
+	while (wtb[i])
 	{
 		free(wtb[i]);
 		i++;
@@ -94,7 +94,7 @@ void	free_cmd(char **wtb)
 char		**str_to_wtb(char *src, int *nb_words)
 {
 	char	**wtb;
-	char  *str;
+	char	*str;
 	int		i;
 
 	wtb = 0;

@@ -11,38 +11,34 @@ static int	read_word(int fd, char *buffer, size_t const size)
 	int		ret;
 
 	if ((ret = (int)read(fd, buffer, size)) == -1)
-	{
 		exit(EXIT_FAILURE);
-	}
 	return (ret);
 }
 
-void            resize(char *str, int i, int *index)
+void	resize(char *str, int i, int *index)
 {
-	int           ind;
+	int		ind;
 
 	ind = -1;
 	while (++ind < (*index - i))
-	{
 		str[ind] = str[i + ind];
-	}
 	*index -= i;
 }
 
-char        *my_strndup(char const *src, unsigned int i)
+char	*my_strndup(char const *src, unsigned int i)
 {
-	char    *dest;
+	char	*dest;
 
 	dest = (char *)malloc(sizeof(*src) * (i + 1));
 	strncpy(dest, src, i);
 	return dest;
 }
 
-char            *getnline(char *str, int *index, const int fd)
+char	*getnline(char *str, int *index, const int fd)
 {
-	int           i;
-	char          *ret;
-	int           f;
+	int		i;
+	char	*ret;
+	int		f;
 
 	i = 0;
 	f = 0;
@@ -69,10 +65,10 @@ char            *getnline(char *str, int *index, const int fd)
 	return (0);
 }
 
-char            *get_one_line(int fd, int *index, char *buff)
+char	*get_one_line(int fd, int *index, char *buff)
 {
-	char          *tmp;
-	int           offset;
+	char	*tmp;
+	int		offset;
 
 	tmp = getnline(buff, index, fd);
 	offset = 1;
@@ -101,10 +97,10 @@ char            *get_one_line(int fd, int *index, char *buff)
 	return (tmp);
 }
 
-char            *read_line(int fd)
+char	*read_line(int fd)
 {
-	static int    index = 0;
-	static char   buff[BUFFER + 1];
+	static int		index = 0;
+	static char		buff[BUFFER + 1];
 
 	if (fd == -1)
 	{
@@ -112,9 +108,7 @@ char            *read_line(int fd)
 		buff[0] = 0;
 	}
 	else
-	{
 		return (get_one_line(fd, &index, buff));
-	}
-
+	
 	return (0);
 }

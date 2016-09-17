@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include "include/extract.hpp"
 #include "include/parser.hpp"
-#include "include/Program.hpp"
+#include "include/LinkedHashMap.hpp"
 
-Program		*all_datas;
+LinkedHashMap		*all_datas;
 
 
 void add_cmd(char *key, char *value)
@@ -17,9 +17,8 @@ void add_cmd(char *key, char *value)
 
 void delete_cmd(char *key)
 {
-	char *value;
+	char	*value;
 
-	//    puts("\tdeletion");
 	if (all_datas->delete_key(key, &value))
 		puts(value);
 	else
@@ -28,14 +27,13 @@ void delete_cmd(char *key)
 
 void init(char **cmd_val, int nb_words)
 {
-	char *key;
-	char *value;
+	char	*key;
+	char	*value;
 
 	key = cmd_val[0];
 	value = cmd_val[1];
 	if (nb_words == 1)
 	{
-		// puts("\trecherche..");
 		if (all_datas->find_value(key, &value))
 			puts(value);
 		else
@@ -53,14 +51,15 @@ void init(char **cmd_val, int nb_words)
 	}
 }
 
-int main(int argc, const char * argv[])
+int		main(int argc, const char *argv[])
 {
-	char	*str;
-	char	**cmd_val;
-	int		nb_words;
+	char			*str;
+	char			**cmd_val;
+	int				nb_words;
+	LinkedHashMap	all_datas;
 
 	//    singleton
-	all_datas = new Program();
+	all_datas = new LinkedHashMap();
 
 	while ((str = read_line(0)))
 	{
@@ -81,5 +80,5 @@ int main(int argc, const char * argv[])
 	}
 	
 	delete all_datas;
-	return 0;
+	return (0);
 }
