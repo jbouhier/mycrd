@@ -17,7 +17,7 @@ typedef struct		s_data
 
 class LinkedHashMap
 {
-	private:
+	public:
 		t_data		**_hashtab;
 		t_data		*_dictionnary;
 

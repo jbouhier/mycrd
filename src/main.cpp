@@ -56,7 +56,7 @@ int		main(int argc, const char *argv[])
 	char			*str;
 	char			**cmd_val;
 	int				nb_words;
-	LinkedHashMap	all_datas;
+	LinkedHashMap	*all_datas;
 
 	//    singleton
 	all_datas = new LinkedHashMap();
@@ -75,7 +75,7 @@ int		main(int argc, const char *argv[])
 
 	while (all_datas->_dictionnary != NULL) 
 	{
-		printf("cle  : %s => valeur : %s\n", all_datas->_dictionnary->cle, all_datas->_dictionnary->valeur);
+		printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
 		all_datas->_dictionnary = all_datas->_dictionnary->next;
 	}
 	
