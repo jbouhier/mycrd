@@ -1,31 +1,28 @@
-CC      :=  g++ -g 
-SRC     :=  $(wildcard src/*.cpp) 
-BDIR    :=  obj
-EDIR    :=  Release
-OBJ     :=  $(SRC:src/%.c=$(BDIR)/%.o)
-CFLAGS  :=  -W -Wall -Werror
-NAME    :=  $(EDIR)/MyCrd
+CXX       :=  g++ -g
+SRC       :=  $(wildcard src/*.cpp)
+BDIR      :=  obj
+EDIR      :=  Release
+OBJ       :=  $(SRC:src/%.c=$(BDIR)/%.o)
+CXXFLAGS  :=  -W -Wall -Werror
+NAME      :=  $(EDIR)/MyCrd
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ) | $(EDIR)
-	$(CC) $^ -o $@
+$(NAME): $(OBJ) | $(BDIR) $(EDIR)
+	$(CXX) $^ -o $@
 
-$(BDIR)/%.o: src/%.cpp | $(BDIR) | $(EDIR)
-	$(CC) $(CFLAGS) -o $@ -c $<
+$(BDIR)/%.o: src/%.cpp
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
-$(BDIR):
-	@mkdir $@ 
-
-$(EDIR):
-	@mkdir $@
+$(BDIR) $(EDIR):
+	@mkdir -p $@
 
 clean:
 	$(RM) -r $(BDIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) -r $(EDIR)
 
 re: fclean all
