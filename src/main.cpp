@@ -1,7 +1,7 @@
-#include <iostream>
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "include/extract.hpp"
 #include "include/parser.hpp"
 #include "include/LinkedHashMap.hpp"
@@ -51,6 +51,8 @@ void init(char **cmd_val, int nb_words)
 	}
 }
 
+
+
 int		main(void)
 {
 	char			*str;
@@ -58,9 +60,14 @@ int		main(void)
 	int				nb_words;
 	LinkedHashMap	*all_datas;
 
-	//    singleton
 	all_datas = new LinkedHashMap();
-
+	if (!isatty(fileno(stdin))) // Check if stdin is a terminal / tty
+	{
+		printf("Error: stdin is a terminal. File or a pipe expected\n");
+		return (1);
+	}
+		
+	// Read stdin (Pipe or file)
 	while ((str = read_line(0)))
 	{
 		if (*str)
@@ -79,6 +86,6 @@ int		main(void)
 		all_datas->_dictionnary = all_datas->_dictionnary->next;
 	}
 	
-	delete all_datas;
+	delete (all_datas);
 	return (0);
 }
