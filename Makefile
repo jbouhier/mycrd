@@ -11,7 +11,7 @@ NAME      :=  $(EDIR)/MyCrd
 all: $(NAME)
 
 $(NAME): $(OBJ) | $(BDIR) $(EDIR)
-	$(CXX) $^ -o $@
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
 $(BDIR)/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $<

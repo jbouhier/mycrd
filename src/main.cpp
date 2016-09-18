@@ -51,7 +51,7 @@ void init(char **cmd_val, int nb_words)
 	}
 }
 
-int		main(int argc, const char *argv[])
+int		main(void)
 {
 	char			*str;
 	char			**cmd_val;
