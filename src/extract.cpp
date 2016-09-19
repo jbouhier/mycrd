@@ -75,17 +75,12 @@ char	*get_one_line(int fd, int *index, char *buff)
 	while (tmp == 0 && offset > 0)
 	{
 		if ((*index) + READ_B > BUFFER)
-		{
 			offset = read_word(fd, buff + (*index), BUFFER - (*index));
-		}
 		else
-		{
 			offset = read_word(fd, buff + (*index), READ_B);
-		}
+		
 		if (offset > 0)
-		{
 			(*index) += offset;
-		}
 		tmp = getnline(buff, index, fd);
 	}
 
