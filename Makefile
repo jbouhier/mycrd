@@ -1,26 +1,28 @@
-CXX       :=  g++ -g
-SRC       :=  $(wildcard src/*.cpp)
-BDIR      :=  obj
+NAME      :=  MyCrd
 EDIR      :=  Release
-OBJ       :=  $(SRC:src/%.c=$(BDIR)/%.o)
+ODIR      :=  obj
+SRC       :=  $(wildcard src/*.cpp)
+OBJ       :=  $(SRC:src/%.cpp=$(ODIR)/%.o)
 CXXFLAGS  :=  -W -Wall -Werror
-NAME      :=  $(EDIR)/MyCrd
 
-.PHONY: all clean fclean re
+.PHONY: all debug clean fclean re
 
 all: $(NAME)
 
-$(NAME): $(OBJ) | $(BDIR) $(EDIR)
-	$(CXX) $(CXXFLAGS) $^ -o $@
+debug: CXXFLAGS += -DDEBUG -g
+debug: all
 
-$(BDIR)/%.o: src/%.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $<
+$(NAME): $(OBJ) | $(EDIR)
+	$(CXX) $(CXXFLAGS) $^ -o $(EDIR)/$@
 
-$(BDIR) $(EDIR):
+$(ODIR)/%.o: src/%.cpp | $(ODIR)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(ODIR) $(EDIR):
 	@mkdir -p $@
 
 clean:
-	$(RM) -r $(BDIR)
+	$(RM) -r $(ODIR)
 
 fclean: clean
 	$(RM) -r $(EDIR)
