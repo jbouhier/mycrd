@@ -1,5 +1,5 @@
 NAME      :=  MyCrd
-EDIR      :=  Release
+BDIR      :=  Release
 ODIR      :=  obj
 SRC       :=  $(wildcard src/*.cpp)
 OBJ       :=  $(SRC:src/%.cpp=$(ODIR)/%.o)
@@ -10,21 +10,21 @@ CXXFLAGS  :=  -W -Wall -Werror
 all: $(NAME)
 
 debug: CXXFLAGS += -DDEBUG -g
-debug: all
+debug:all
 
-$(NAME): $(OBJ) | $(EDIR)
-	$(CXX) $(CXXFLAGS) $^ -o $(EDIR)/$@
+$(NAME): $(OBJ) | $(BDIR)
+	$(CXX) $(CXXFLAGS) $^ -o $(BDIR)/$@
 
 $(ODIR)/%.o: src/%.cpp | $(ODIR)
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
-$(ODIR) $(EDIR):
+$(ODIR) $(BDIR):
 	@mkdir -p $@
 
 clean:
 	$(RM) -r $(ODIR)
 
 fclean: clean
-	$(RM) -r $(EDIR)
+	$(RM) -r $(BDIR)
 
 re: fclean all
