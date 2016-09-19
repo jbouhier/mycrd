@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <exception>
 #include <stdexcept>
-#include "include/LinkedHashMap.hpp"
+#include "../include/LinkedHashMap.hpp"
 
 LinkedHashMap::LinkedHashMap()
 {

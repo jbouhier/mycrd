@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "include/extract.hpp"
-#include "include/parser.hpp"
-#include "include/LinkedHashMap.hpp"
+#include "../include/extract.hpp"
+#include "../include/parser.hpp"
+#include "../include/LinkedHashMap.hpp"
 
 LinkedHashMap		*all_datas;
 
@@ -61,9 +61,10 @@ int		main(void)
 	LinkedHashMap	*all_datas;
 
 	all_datas = new LinkedHashMap();
-	if (!isatty(fileno(stdin))) // Check if stdin is a terminal / tty
+
+	if (isatty(fileno(stdin))) // Check if stdin is a terminal / tty
 	{
-		printf("Error: stdin is a terminal. File or a pipe expected\n");
+		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
 	}
 		
@@ -72,6 +73,7 @@ int		main(void)
 	{
 		if (*str)
 		{
+			printf("%s\n", str);
 			cmd_val = str_to_wtb(str, &nb_words);
 			init(cmd_val, nb_words);
 			free_cmd(cmd_val);
