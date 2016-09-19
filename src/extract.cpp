@@ -38,10 +38,8 @@ char	*getnline(char *str, int *index, const int fd)
 {
 	int		i;
 	char	*ret;
-	int		f;
 
 	i = 0;
-	f = 0;
 	ret = 0;
 	while (i < *index)
 	{
