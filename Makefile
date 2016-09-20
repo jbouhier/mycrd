@@ -10,7 +10,7 @@ CXXFLAGS  :=  -W -Wall -Werror
 all: $(NAME)
 
 debug: CXXFLAGS += -DDEBUG -g
-debug:all
+debug: all
 
 $(NAME): $(OBJ) | $(BDIR)
 	$(CXX) $(CXXFLAGS) $^ -o $(BDIR)/$@
