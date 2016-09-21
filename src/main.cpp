@@ -62,7 +62,10 @@ int		main(void)
 
 	all_datas = new LinkedHashMap();
 
-	if (isatty(fileno(stdin))) // Check if stdin is a terminal / tty
+	/*
+	** Check if stdin is a terminal / tty
+	*/
+	if (isatty(fileno(stdin)))
 	{
 		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
