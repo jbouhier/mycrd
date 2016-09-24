@@ -19,6 +19,7 @@ void delete_cmd(char *key)
 {
 	char	*value;
 
+	value = NULL;
 	if (all_datas->delete_key(key, &value))
 		puts(value);
 	else
@@ -62,16 +63,12 @@ int		main(void)
 
 	all_datas = new LinkedHashMap();
 
-	/*
-	** Check if stdin is a terminal / tty
-	*/
 	if (isatty(fileno(stdin)))
 	{
 		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
 	}
 		
-	// Read stdin (Pipe or file)
 	while ((str = read_line(0)))
 	{
 		if (*str)
