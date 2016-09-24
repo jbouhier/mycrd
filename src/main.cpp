@@ -5,54 +5,7 @@
 #include "../include/extract.hpp"
 #include "../include/parser.hpp"
 #include "../include/LinkedHashMap.hpp"
-
-LinkedHashMap		*all_datas;
-
-
-void add_cmd(char *key, char *value)
-{
-	all_datas->add_data(key, value);
-	puts(key);
-}
-
-void delete_cmd(char *key)
-{
-	char	*value;
-
-	value = NULL;
-	if (all_datas->delete_key(key, &value))
-		puts(value);
-	else
-		puts("-1");
-}
-
-void init(char **cmd_val, int nb_words)
-{
-	char	*key;
-	char	*value;
-
-	key = cmd_val[0];
-	value = cmd_val[1];
-	if (nb_words == 1)
-	{
-		if (all_datas->find_value(key, &value))
-			puts(value);
-		else
-		{
-			puts ("nothing found");
-			puts("-1");
-		}
-	}
-	else
-	{
-		if (!strcmp(cmd_val[1], "D"))
-			delete_cmd(key);
-		else
-			add_cmd(key, value);
-	}
-}
-
-
+#include "../include/utilities.hpp"
 
 int		main(void)
 {
@@ -75,7 +28,7 @@ int		main(void)
 		{
 			printf("%s\n", str);
 			cmd_val = str_to_wtb(str, &nb_words);
-			init(cmd_val, nb_words);
+			init(&all_datas, cmd_val, nb_words);
 			free_cmd(cmd_val);
 		}
 		free(str);
