@@ -21,7 +21,6 @@ class LinkedHashMap
 		t_data		**_hashtab;
 		t_data		*_dictionnary;
 
-	public:
 		LinkedHashMap();
 		~LinkedHashMap();
 

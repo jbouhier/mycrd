@@ -106,4 +106,3 @@ char		**str_to_wtb(char *src, int *nb_words)
 	wtb[i] = 0;
 	return (wtb);
 }
-

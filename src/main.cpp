@@ -22,7 +22,7 @@ int		main(void)
 		return (1);
 	}
 	
-	puts("--------- start --------\n");
+	puts("--------- START --------\n");
 
 	while ((str = read_line(0)))
 	{
@@ -39,9 +39,11 @@ int		main(void)
 
 	while (all_datas->_dictionnary != NULL) 
 	{
-		printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
+		// printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
 		all_datas->_dictionnary = all_datas->_dictionnary->next;
 	}
+
+	puts("\n--------- END --------");
 	
 	delete (all_datas);
 	return (0);
