@@ -74,7 +74,7 @@ t_data		*LinkedHashMap::find_node_by_key(const char *key)
 
 	assert(this->_hashtab);
 	assert(key);
-	printf(" the key to find is %s\n", key);
+	printf("Key:  %s\n", key);
 	for (node = this->_hashtab[hash(key)]; node; node = node->next)
 	{
 

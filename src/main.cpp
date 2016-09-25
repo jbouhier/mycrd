@@ -21,12 +21,14 @@ int		main(void)
 		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
 	}
-		
+	
+	puts("--------- start --------\n");
+
 	while ((str = read_line(0)))
 	{
 		if (*str)
 		{
-			printf("%s\n", str);
+			printf("Line: %s\n", str);
 			cmd_val = str_to_wtb(str, &nb_words);
 			init(&all_datas, cmd_val, nb_words);
 			free_cmd(cmd_val);
