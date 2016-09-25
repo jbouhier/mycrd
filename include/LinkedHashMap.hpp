@@ -26,7 +26,6 @@ class LinkedHashMap
 
 		bool	add_data(char *key, char *value);
 		bool	delete_key(char *key, char **value);
-
 		bool	find_value(char *key, char **value);
 
 	private:
