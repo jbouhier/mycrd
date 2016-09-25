@@ -22,17 +22,13 @@ int		main(void)
 		return (1);
 	}
 	
-	puts("==================== START ===================\n");
-
 	while ((str = read_line(0)))
 	{
 		if (*str)
 		{
-			// printf("LiNE %s\n", str);
 			cmd_val = str_to_wtb(str, &nb_words);
 			init(&all_datas, cmd_val, nb_words);
 			free_cmd(cmd_val);
-			// puts("");
 		}
 		free(str);
 		str = NULL;
@@ -43,8 +39,6 @@ int		main(void)
 	// 	printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
 	// 	all_datas->_dictionnary = all_datas->_dictionnary->next;
 	// }
-
-	puts("\n===================== END ====================");
 	
 	delete (all_datas);
 	return (0);

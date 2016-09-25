@@ -94,7 +94,7 @@ bool	LinkedHashMap::upsert(const char *key, const char *value)
 	action_is_insert = false;
 	if (!(node = update_node_with_key_for_value(key, value)))
 	{
-		printf("%s\n", key);
+		// printf("upsert             %s\n", key);
 		node = this->create_new_node_with_key_and_value(key, value);
 		if (node)
 		{
