@@ -1,3 +1,0 @@
-#!/bin/bash
-
-./Release/MyCrd < test/tiny-test.txt
