@@ -1,4 +1,7 @@
 #!/bin/bash
 
+CLS='printf \033c'
+
 make re
+$CLS
 ./Release/MyCrd < test/tiny-test.txt
