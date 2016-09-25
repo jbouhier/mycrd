@@ -5,7 +5,7 @@
 void add_cmd(LinkedHashMap **all_datas, char *key, char *value)
 {
 	(**all_datas).add_data(key, value);
-	// puts(key);
+	// printf("%s\n", value);
 }
 
 void delete_cmd(LinkedHashMap **all_datas, char *key)
@@ -14,10 +14,9 @@ void delete_cmd(LinkedHashMap **all_datas, char *key)
 
 	value = NULL;
 	if ((**all_datas).delete_key(key, &value))
-		// puts(value);
-		puts("delete_cmd");
+		printf("%s\n", value);
 	else
-		puts("-1");
+		printf("%d\n", -1);
 }
 
 void init(LinkedHashMap **all_datas, char **cmd_val, int nb_words)
@@ -30,11 +29,10 @@ void init(LinkedHashMap **all_datas, char **cmd_val, int nb_words)
 	if (nb_words == 1)
 	{
 		if ((**all_datas).find_value(key, &value))
-			// puts(value);
-			puts("init"); 
+			printf("%s\n", value);
 		else
 		{
-			puts("-1");
+			printf("%d\n", -1);
 		}
 	}
 	else

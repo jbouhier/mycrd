@@ -101,8 +101,10 @@ char		**str_to_wtb(char *src, int *nb_words)
 	i = 0;
 	*nb_words = count_words(src);
 	wtb = (char **)malloc(sizeof(*wtb) * (*nb_words + sizeof(*wtb)));
+	
 	while ((str = get_next_word(&src)))
 		wtb[i++] = str;
 	wtb[i] = 0;
+
 	return (wtb);
 }

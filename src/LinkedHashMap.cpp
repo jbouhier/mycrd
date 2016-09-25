@@ -74,11 +74,8 @@ t_data		*LinkedHashMap::find_node_by_key(const char *key)
 
 	assert(this->_hashtab);
 	assert(key);
-	// printf("Key:  %s\n", key);
 	for (node = this->_hashtab[hash(key)]; node; node = node->next)
 	{
-
-		// printf(" the key %s => %s\n", key, node->key);
 		if (!strcmp(key, node->key))
 		{
 			return (node);
@@ -97,6 +94,7 @@ bool	LinkedHashMap::upsert(const char *key, const char *value)
 	action_is_insert = false;
 	if (!(node = update_node_with_key_for_value(key, value)))
 	{
+		printf("%s\n", key);
 		node = this->create_new_node_with_key_and_value(key, value);
 		if (node)
 		{
