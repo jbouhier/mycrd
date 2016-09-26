@@ -29,7 +29,10 @@ void init(LinkedHashMap **all_datas, char **cmd_val, int nb_words)
 	if (nb_words == 1)
 	{
 		if ((**all_datas).find_value(key, &value))
-			printf("%s\n", value);
+		{
+			// This part is wrong on Debian
+			printf("test %s\n", value);
+		}
 		else
 			printf("%d\n", -1);
 	}
