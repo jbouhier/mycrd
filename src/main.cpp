@@ -21,23 +21,24 @@ int		main(void)
 		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
 	}
-	
+
 	while ((str = read_line(0)))
 	{
 		if (*str)
 		{
 			cmd_val = str_to_wtb(str, &nb_words);
 			init(&all_datas, cmd_val, nb_words);
-			free_cmd(cmd_val);
 		}
-		free(str);
 		str = NULL;
 	}
 
+	free(str);
+	free_cmd(cmd_val);
+
 	// while (all_datas->_dictionnary != NULL) 
 	// {
-	// 	printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
-	// 	all_datas->_dictionnary = all_datas->_dictionnary->next;
+	//	printf("key  : %s => value : %s\n", all_datas->_dictionnary->key, all_datas->_dictionnary->value);
+	//	all_datas->_dictionnary = all_datas->_dictionnary->next;
 	// }
 	
 	delete (all_datas);
