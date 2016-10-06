@@ -13,6 +13,33 @@ LinkedHashMap::LinkedHashMap()
 		throw 2323;
 }
 
+int	LinkedHashMap::my_getnbr(char *str)
+{
+	int	var;
+	int	inv;
+	int	i;
+	inv = 1;
+	var = 0;
+	i = 0;
+	if (str == NULL)
+		return (0);
+	while ((*str < 47 || *str > 58) && *str != 0)
+	{
+		str = str + 1;
+		i = i + 1;
+	}
+	if (i > 0 && *(str - 1) == 45)
+		inv = -1;
+	while (*str != 0 && *str >= '0' && *str <= '9')
+	{
+		var = var * 10;
+		var = var + *str - 48;
+		str = str + 1;
+	}
+	var = var * inv;
+	return (var);
+}
+
 LinkedHashMap::~LinkedHashMap()
 {
 	t_data	*old;
@@ -63,9 +90,15 @@ unsigned int	LinkedHashMap::hash(const char *s)
 {
 	unsigned hashval;
 
-	for (hashval = 0; *s; ++s)
-		hashval = *s + 31 * hashval;
-	return (hashval % HASHSIZE);
+	hashval = my_getnbr(strdup(s));
+	if (hashval > HASHSIZE) {
+		for (hashval = 0; *s; ++s) {
+			hashval = *s + 31 * hashval;
+		}
+		return (hashval % HASHSIZE);
+	}
+
+	return hashval;
 }
 
 t_data		*LinkedHashMap::find_node_by_key(const char *key)
@@ -74,12 +107,13 @@ t_data		*LinkedHashMap::find_node_by_key(const char *key)
 
 	assert(this->_hashtab);
 	assert(key);
-	for (node = this->_hashtab[hash(key)]; node; node = node->next)
-	{
-		if (!strcmp(key, node->key))
+	node = this->_hashtab[hash(key)];
+	while(node != NULL) {
+		if (strcmp(key, node->key) == 0)
 		{
 			return (node);
 		}
+		node = node->next;
 	}
 	return (NULL);
 }
@@ -94,7 +128,7 @@ bool	LinkedHashMap::upsert(const char *key, const char *value)
 	action_is_insert = false;
 	if (!(node = update_node_with_key_for_value(key, value)))
 	{
-		// printf("upsert             %s\n", key);
+		//printf("upsert             %s\n", key);
 		node = this->create_new_node_with_key_and_value(key, value);
 		if (node)
 		{
@@ -107,7 +141,7 @@ bool	LinkedHashMap::upsert(const char *key, const char *value)
 
 t_data	*LinkedHashMap::create_new_node_with_key_and_value(const char *key, const char *value)
 {
-	t_data		*new_node;
+	t_data		*new_node = NULL;
 	static int	i;
 
 	if ((new_node = (t_data *)malloc(sizeof(*new_node))))
@@ -146,3 +180,4 @@ t_data	*LinkedHashMap::update_node_with_key_for_value(const char *key,const char
 		return (NULL);
 	return (node);
 }
+
