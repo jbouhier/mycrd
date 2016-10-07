@@ -108,6 +108,11 @@ t_data		*LinkedHashMap::find_node_by_key(const char *key)
 	assert(this->_hashtab);
 	assert(key);
 	node = this->_hashtab[hash(key)];
+	if (node != NULL && node->next == NULL) {
+		// second Optimisation
+		// Only one node found in this node. No need to loop and search furthermore
+		return (node);
+	}
 	while(node != NULL) {
 		if (strcmp(key, node->key) == 0)
 		{

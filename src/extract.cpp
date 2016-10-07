@@ -15,6 +15,8 @@ static int	read_word(int fd, char *buffer, size_t const size)
 	return (ret);
 }
 
+// Function resize puts the pointer on the next line and the resifines the size of the input
+// This function is huge in performance because it loops through the huge input many times and not once
 void	resize(char *str, int i, int *index)
 {
 	int		ind;
@@ -25,6 +27,7 @@ void	resize(char *str, int i, int *index)
 	*index -= i;
 }
 
+// This function do the same as strndup and saves in a char* being malloc the string param
 char	*my_strndup(char const *src, unsigned int i)
 {
 	char	*dest;
@@ -34,6 +37,7 @@ char	*my_strndup(char const *src, unsigned int i)
 	return dest;
 }
 
+// This function is used to get the first lines of the input. it calls the resize file to alter the input content
 char	*getnline(char *str, int *index, const int fd)
 {
 	int		i;
@@ -63,6 +67,7 @@ char	*getnline(char *str, int *index, const int fd)
 	return (0);
 }
 
+// This function construct all the input datas in a string variable before calling the getnline to have the first line input
 char	*get_one_line(int fd, int *index, char *buff)
 {
 	char	*tmp;

@@ -9,7 +9,7 @@
 
 int		main(void)
 {
-	char			*str;
+	char			str[BUFF_SIZE];
 	char			**cmd_val;
 	int				nb_words;
 	LinkedHashMap	*all_datas;
@@ -21,18 +21,29 @@ int		main(void)
 		printf("Error: stdin is a terminal. Expected File or Pipe.\n");
 		return (1);
 	}
-
-	while ((str = read_line(0)))
-	{
+	// First optim : Read directly each line instead of loading and looping each time on it
+	while( cin.good() ) {
+		cin.getline(str, sizeof(str));
 		if (*str)
 		{
 			cmd_val = str_to_wtb(str, &nb_words);
 			init(&all_datas, cmd_val, nb_words);
 		}
-		str = NULL;
 	}
 
-	free(str);
+
+	
+	//while ((str = read_line(0)))
+	//{
+	//	if (*str)
+	//	{
+	//		cmd_val = str_to_wtb(str, &nb_words);
+	//		init(&all_datas, cmd_val, nb_words);
+	//	}
+	//	str = NULL;
+	//}
+
+	//free(str);
 	free_cmd(cmd_val);
 
 	// while (all_datas->_dictionnary != NULL) 
